@@ -14,7 +14,7 @@
         #pomodoroTimer {
             width: 200px;
             height: 200px;
-            background: linear-gradient(to bottom right, #007BFF, #0096FF);
+            background: #007BFF;
             border-radius: 50%;
             display: flex;
             flex-direction: column;
@@ -26,18 +26,24 @@
 
         #timeLeft {
             color: white;
-            font-size: 30px;
+            font-size: 50px;
             margin-bottom: 10px;
         }
 
         .timerButton {
-            margin-top: 5px;
-            color: white;
+            width: 60px;
+            height: 60px;
+            margin-top: 10px;
             background: #007BFF;
             border: none;
-            border-radius: 5px;
-            padding: 5px 10px;
+            border-radius: 50%;
+            padding: 0;
             cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 16px;
         }
     </style>
 </head>
@@ -45,8 +51,8 @@
 
 <div id="pomodoroTimer">
     <div id="timeLeft"></div>
-    <button id="pomodoroBtn" class="timerButton">Start Pomodoro (25 min)</button>
-    <button id="breakBtn" class="timerButton">Start Break (5 min)</button>
+    <button id="pomodoroBtn" class="timerButton">&#x1F680;</button>
+    <button id="breakBtn" class="timerButton">&#x1F6A8;</button>
 </div>
 
 <script>
@@ -58,8 +64,8 @@
         document.getElementById('timeLeft').innerText = minutes + ":" + (seconds < 10 ? '0' + seconds : seconds);
 
         seconds--;
-        if(seconds < 0) {
-            if(minutes == 0) {
+        if (seconds < 0) {
+            if (minutes == 0) {
                 alert('Timer complete!');
                 stopTimer();
             } else {
@@ -70,7 +76,7 @@
     }
 
     function startTimer(timeMinutes) {
-        if(timerID) stopTimer(); // If a timer is already running, stop it
+        if (timerID) stopTimer(); // If a timer is already running, stop it
 
         minutes = timeMinutes;
         seconds = 0;
@@ -80,15 +86,15 @@
     }
 
     function stopTimer() {
-        if(timerID) {
+        if (timerID) {
             clearInterval(timerID);
             timerID = null;
         }
     }
 
     // Attach event listeners to buttons
-    document.getElementById('pomodoroBtn').addEventListener('click', function() { startTimer(25); });
-    document.getElementById('breakBtn').addEventListener('click', function() { startTimer(5); });
+    document.getElementById('pomodoroBtn').addEventListener('click', function () { startTimer(25); });
+    document.getElementById('breakBtn').addEventListener('click', function () { startTimer(5); });
 </script>
 
 </body>
